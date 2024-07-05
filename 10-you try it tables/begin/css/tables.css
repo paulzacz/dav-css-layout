@@ -2,35 +2,131 @@
 and Adrian Roselli: http://adrianroselli.com/2017/11/a-responsive-accessible-table.html#Responsive
 */
 
-
-
-
-
-
 /* basic table styling */
 table {
-    border-collapse: collapse;
-    border: 1px solid black;
+  border-collapse: collapse;
+  border: 1px solid black;
 }
 tr:nth-child(odd) {
-    background-color: #f6dcd4;
+  background-color: #f6dcd4;
 }
 th {
-    text-align: left;
+  text-align: left;
 }
-
 
 /* generic page styling */
 aside ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 aside li {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
+.tablescroll {
+  overflow-x: auto;
+}
+table,
+thead,
+tbody,
+th,
+td,
+tr {
+  display: block;
+}
 
- 
+thead tr {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+tr {
+  border-bottom: 1px solid black;
+}
 
+thead tr {
+  background-color: white;
+}
 
+th,
+td {
+  padding: 1rem;
+}
+td::before {
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+td:where(:nth-of-type(1))::before {
+  content: "Planet Name";
+}
+td:where(:nth-of-type(2))::before {
+  content: "Mass (10^24kg)";
+}
+td:where(:nth-of-type(3))::before {
+  content: "Diameter (km)";
+}
+td:where(:nth-of-type(4))::before {
+  content: "Rotation Period (hours)";
+}
+td:where(:nth-of-type(5))::before {
+  content: "Length of Day (hours)";
+}
+td:where(:nth-of-type(6))::before {
+  content: "Distance from Sun (10^6 km)";
+}
+td:where(:nth-of-type(7))::before {
+  content: "Orbital Period (days)";
+}
+td:where(:nth-of-type(8))::before {
+  content: "Mean Temp (C)";
+}
+td:where(:nth-of-type(9))::before {
+  content: "Number of Moons";
+}
+td:where(:nth-of-type(10))::before {
+  content: "Ring System?";
+}
+td:where(:nth-of-type(11))::before {
+  content: "Global Magnetic Field?";
+}
+caption {
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+  font-size: var(--h2);
+  padding: 0.5rem;
+  display: block;
+}
+@media (min-width: 1090px) {
+  thead tr {
+    position: static;
+  }
+  thead,
+  tbody {
+    display: table-row-group;
+  }
+  th,
+  td {
+    display: table-cell;
+    padding: 0.5em;
+  }
+  tr {
+    display: table-row;
+  }
+  table {
+    display: table;
+  }
+  caption {
+    font-size: var(--font-size);
+  }
+  td::before {
+    content: "";
+    margin-right: 0;
+  }
+}
